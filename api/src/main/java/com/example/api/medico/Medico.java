@@ -2,14 +2,16 @@ package com.example.api.medico;
 
 import com.example.api.endereco.DadosEndereco;
 import com.example.api.endereco.Endereco;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.example.api.medico.dto.DadosCadastroMedico;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Table(name = "medicos")
 @Entity
-@Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Medico {
 
@@ -22,6 +24,14 @@ public class Medico {
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco_id")
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
+
+    public Medico(DadosCadastroMedico novoMedico) {
+        this.nome = novoMedico.nome();
+        this.email = novoMedico.email();
+        this.crm = novoMedico.crm();
+        this.especialidade = novoMedico.especialidade();
+        this.endereco = new Endereco(novoMedico.endereco());
+    }
 }

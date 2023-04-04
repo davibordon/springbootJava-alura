@@ -1,6 +1,7 @@
-package com.example.api.medico;
+package com.example.api.medico.dto;
 
 import com.example.api.endereco.Endereco;
+import com.example.api.medico.Especialidade;
 
 public record DadosCadastroMedico(
         String nome,
