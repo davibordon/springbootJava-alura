@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/medicos")
 public class MedicoController {
@@ -19,7 +21,7 @@ public class MedicoController {
 
     @GetMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastroMedico novoMedico){
+    public void cadastrar(@RequestBody @Valid DadosCadastroMedico novoMedico){
         medicoRepository.save(new Medico(novoMedico));
     }
 }
