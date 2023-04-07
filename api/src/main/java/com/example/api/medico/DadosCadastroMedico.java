@@ -1,4 +1,4 @@
-package com.example.api.medico.dto;
+package com.example.api.medico;
 
 import com.example.api.endereco.Endereco;
 import com.example.api.medico.Especialidade;
@@ -15,8 +15,6 @@ public class DadosCadastroMedico{
     @Email
     @NotBlank
     private String email;
-    @NotBlank
-    private String telefone;
     @NotBlank
     @Pattern(regexp = "\\d{4,6}")
     private String crm;
@@ -40,14 +38,6 @@ public class DadosCadastroMedico{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public String getCrm() {

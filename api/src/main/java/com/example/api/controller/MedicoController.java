@@ -1,8 +1,8 @@
 package com.example.api.controller;
 
 import com.example.api.medico.Medico;
-import com.example.api.medico.dto.DadosCadastroMedico;
-import com.example.api.medico.repository.MedicoRepository;
+import com.example.api.medico.DadosCadastroMedico;
+import com.example.api.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
