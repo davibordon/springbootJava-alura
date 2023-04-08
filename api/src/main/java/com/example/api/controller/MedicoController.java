@@ -25,7 +25,7 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<Medico> listar(){
-        return medicoRepository.findAll();
+    public List<DadosListagemMedico> listar(){
+        return medicoRepository.findAll().stream().map(DadosListagemMedico::new).toList();
     }
 }
