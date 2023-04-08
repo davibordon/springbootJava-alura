@@ -1,5 +1,6 @@
-package com.example.api.endereco;
+package com.example.api.model.endereco;
 
+import com.example.api.model.medico.Medico;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "ENDERECO")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,13 +25,13 @@ public class Endereco {
     private String complemento;
     private String numero;
 
-    public Endereco(Endereco novoEndereco) {
-        this.logradouro = novoEndereco.logradouro;
-        this.bairro = novoEndereco.bairro;
-        this.cep = novoEndereco.cep;
-        this.cidade = novoEndereco.cidade;
-        this.uf = novoEndereco.uf;
-        this.complemento = novoEndereco.complemento;
-        this.numero = novoEndereco.numero;
+    public Endereco(DadosEndereco novoEndereco) {
+        this.logradouro = novoEndereco.logradouro();
+        this.bairro = novoEndereco.bairro();
+        this.cep = novoEndereco.cep();
+        this.cidade = novoEndereco.cidade();
+        this.uf = novoEndereco.uf();
+        this.complemento = novoEndereco.complemento();
+        this.numero = novoEndereco.numero();
     }
 }

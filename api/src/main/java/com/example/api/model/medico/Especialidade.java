@@ -1,4 +1,4 @@
-package com.example.api.medico;
+package com.example.api.model.medico;
 
 public enum Especialidade {
 
