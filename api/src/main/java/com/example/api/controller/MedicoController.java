@@ -38,4 +38,10 @@ public class MedicoController {
         Medico medico = medicoRepository.getReferenceById(medicoAtualizado.getId());
         medico.atualizarInformacoes(medicoAtualizado);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Integer id){
+        medicoRepository.deleteById(id);
+    }
 }
