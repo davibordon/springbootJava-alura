@@ -26,7 +26,10 @@ public class Medico {
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     public Endereco endereco;
 
+    private Boolean ativo;
+
     public Medico(DadosCadastroMedico novoMedico) {
+        this.ativo = true;
         this.nome = novoMedico.getNome();
         this.email = novoMedico.getEmail();
         this.telefone = novoMedico.getTelefone();
@@ -47,5 +50,9 @@ public class Medico {
             this.endereco.atualizarEndereco(medicoAtualizado.getEndereco());
         }
 
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

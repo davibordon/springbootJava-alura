@@ -23,13 +23,13 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroMedico novoMedico){
+    public void cadastrar(@RequestBody @Valid DadosCadastroMedico novoMedico) {
         medicoRepository.save(new Medico(novoMedico));
     }
 
     @GetMapping
-    public Page<DadosListagemMedico> listar(@PageableDefault(size=10, page = 0,sort={"nome"}) Pageable paginacao){
-        return medicoRepository.findAll(paginacao).map(DadosListagemMedico::new);
+    public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao) {
+        return medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
     }
 
     @PutMapping
@@ -41,7 +41,8 @@ public class MedicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable Integer id){
-        medicoRepository.deleteById(id);
+    public void excluir(@PathVariable Integer id) {
+        Medico medico = medicoRepository.getReferenceById(id);
+        medico.excluir();
     }
 }
